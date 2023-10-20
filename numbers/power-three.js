@@ -4,7 +4,7 @@ var isPowerOfThree = function (n) {
   if (n <= 0) {
     return false;
   }
-  while (n >= 3) {
+  while (n > 1) {
     if (n % 3 !== 0) {
       return false;
     }
