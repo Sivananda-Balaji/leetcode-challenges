@@ -2,23 +2,22 @@
 
 var mergeAlternately = function (word1, word2) {
   let answer = "";
-  const len1 = word1.length;
-  const len2 = word2.length;
-  let count1 = 0;
-  let count2 = 0;
-  while (count1 < len1 || count2 < len2) {
-    if (count1 < len1) {
-      answer += word1[count1++];
-    }
-    if (count2 < len2) {
-      answer += word2[count2++];
-    }
+  let count = 0;
+  for (let i = 0; i < word1.length && i < word2.length; i++) {
+    answer += word1[i] + word2[i];
+    count++;
+  }
+  if (count < word1.length) {
+    answer += word1.slice(count);
+  }
+  if (count < word2.length) {
+    answer += word2.slice(count);
   }
   return answer;
 };
 
-const word1 = "abc",
-  word2 = "pqr";
+const word1 = "ab",
+  word2 = "pqrs";
 const result = mergeAlternately(word1, word2);
 
 console.log(result);
