@@ -2,17 +2,13 @@
 
 var kidsWithCandies = function (candies, extraCandies) {
   let largest = -Infinity;
-  for (let i = 0; i < candies.length; i++) {
-    if (candies[i] > largest) {
-      largest = candies[i];
+  for (let candy of candies) {
+    if (candy > largest) {
+      largest = candy;
     }
   }
   const answer = candies.map((candy) => {
-    if (candy + extraCandies >= largest) {
-      return true;
-    } else {
-      return false;
-    }
+    return candy + extraCandies >= largest;
   });
   return answer;
 };
