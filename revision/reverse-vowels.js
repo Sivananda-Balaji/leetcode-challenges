@@ -1,23 +1,22 @@
 //345. Reverse Vowels of a String
 
 var reverseVowels = function (s) {
-  const vowelsArr = [];
-  const vowels = "aeiou";
-  for (let i = 0; i < s.length; i++) {
-    if (vowels.includes(s[i].toLowerCase())) {
-      vowelsArr.push(s[i]);
+  const vowelsArr = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  let left = 0;
+  let right = s.length - 1;
+  const sArr = s.split("");
+  while (left < right) {
+    if (vowelsArr.includes(sArr[left]) && vowelsArr.includes(sArr[right])) {
+      [sArr[left], sArr[right]] = [sArr[right], sArr[left]];
+      left++;
+      right--;
+    } else if (!vowelsArr.includes(sArr[left])) {
+      left++;
+    } else if (!vowelsArr.includes(sArr[right])) {
+      right--;
     }
   }
-  let answer = "";
-  let j = vowelsArr.length - 1;
-  for (let i = 0; i < s.length; i++) {
-    if (vowels.includes(s[i].toLowerCase()) && j >= 0) {
-      answer += vowelsArr[j--];
-    } else {
-      answer += s[i];
-    }
-  }
-  return answer;
+  return sArr.join("");
 };
 
 const result = reverseVowels("aA");
