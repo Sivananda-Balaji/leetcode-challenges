@@ -9,6 +9,7 @@ var lengthOfLastWord = function (s) {
     }
     answer = s[i] + answer;
   }
+  return answer.length;
 };
 
 const s = "Hello World";
