@@ -4,15 +4,16 @@ var check = function (nums) {
   if (nums.length < 2) {
     return true;
   }
-  const sortedArr = [...nums].sort((a, b) => a - b);
-  for (let i = 0; i < sortedArr.length; i++) {
-    const val = sortedArr.shift();
-    sortedArr.push(val);
-    if (String(sortedArr) === String(nums)) {
-      return true;
+  let count = 0;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] < nums[i - 1]) {
+      count++;
     }
   }
-  return false;
+  if (nums[0] < nums.at(-1)) {
+    count++;
+  }
+  return count <= 1;
 };
 
 const nums = [3, 4, 5, 1, 2];
