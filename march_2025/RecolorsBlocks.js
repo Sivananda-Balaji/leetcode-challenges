@@ -1,16 +1,25 @@
 //2379. Minimum Recolors to Get K Consecutive Black Blocks
 
 var minimumRecolors = function (blocks, k) {
-  let count = Infinity;
-  const len = blocks.length;
-  for (let i = 0; i <= len - k; i++) {
-    const val = blocks.slice(i, k + i);
-    let temp = 0;
-    for (let j = 0; j < val.length; j++) {
-      if (val[j] === "W") {
-        temp += 1;
-      }
+  let count = 0;
+  for (let i = 0; i < k; i++) {
+    if (blocks[i] === "W") {
+      count++;
     }
+  }
+  let start = 0;
+  let end = k;
+  const len = blocks.length;
+  let temp = count;
+  while (end < len) {
+    if (blocks[end] === "W") {
+      temp++;
+    }
+    if (blocks[start] === "W") {
+      temp--;
+    }
+    start++;
+    end++;
     count = Math.min(temp, count);
   }
   return count;
