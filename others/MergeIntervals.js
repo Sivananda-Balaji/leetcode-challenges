@@ -4,19 +4,11 @@ var merge = function (intervals) {
   intervals.sort((a, b) => a[0] - b[0]);
   const ans = [];
   for (let i = 0; i < intervals.length; i++) {
-    const first = intervals[i][0];
-    let last = intervals[i][1];
-    if (ans.length !== 0 && last <= ans.at(-1)[1]) {
-      continue;
+    if (ans.length === 0 || ans.at(-1)[1] < intervals[i][0]) {
+      ans.push(intervals[i]);
+    } else {
+      ans.at(-1)[1] = Math.max(intervals[i][1], ans.at(-1)[1]);
     }
-    for (let j = i + 1; j < intervals.length; j++) {
-      if (last >= intervals[j][0]) {
-        last = Math.max(intervals[j][1], last);
-      } else {
-        break;
-      }
-    }
-    ans.push([first, last]);
   }
   return ans;
 };
