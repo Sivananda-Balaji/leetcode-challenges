@@ -1,17 +1,7 @@
 //231. Power of Two
 
 var isPowerOfTwo = function (n) {
-  if (n == 1) {
-    return true;
-  }
-  while (n > 1) {
-    if (n % 2 == 0) {
-      n = Math.floor(n / 2);
-    } else {
-      return false;
-    }
-  }
-  return n === 1 ? true : false;
+  return n > 0 && (n & (n - 1)) === 0;
 };
 
 const n = 3;
