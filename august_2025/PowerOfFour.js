@@ -1,20 +1,10 @@
 //342. Power of Four
 
 var isPowerOfFour = function (n) {
-  if (n <= 0) {
-    return false;
-  }
-  while (n > 1) {
-    if (n % 4 === 0) {
-      n /= 4;
-    } else {
-      return false;
-    }
-  }
-  return n === 1 ? true : false;
+  return n > 0 && (n & (n - 1)) === 0 && n % 3 === 1;
 };
 
-const n = 5;
+const n = 16;
 
 const result = isPowerOfFour(n);
 
