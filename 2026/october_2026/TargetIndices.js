@@ -1,12 +1,18 @@
 //2089. Find Target Indices After Sorting Array
 
 var targetIndices = function (nums, target) {
-  nums.sort((a, b) => a - b);
-  const ans = [];
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === target) {
-      ans.push(i);
+  let smaller = 0,
+    equal = 0;
+  for (let num of nums) {
+    if (num < target) {
+      smaller++;
+    } else if (num === target) {
+      equal++;
     }
+  }
+  const ans = [];
+  for (let i = 0; i < equal; i++) {
+    ans.push(smaller++);
   }
   return ans;
 };
